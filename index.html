@@ -1,0 +1,38 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="js/vue.js"></script>
+        <script src="js/index.js"></script>
+        <link rel="icon" href="exchange-change-svgrepo-com.svg">
+        <title>雲端連結轉換器</title>
+    </head>
+    <body>
+        <div id="box">
+            <div class="form">
+                <h1>雲端連結轉換器</h1>
+                <p>將雲端硬碟中的檔案連結轉為網頁元素連結</p>
+                <h3>請輸入檔案分享連結：</h3>
+                <input type="text" v-model="before"><br>
+                <button @click="change()">開始轉換</button><br>
+                <div v-if="showform">
+                    <h3>獲取轉換結果：</h3>
+                    <span v-text="link" v-if="showif"></span>
+                    <h4 v-else class="error">資料查詢網址錯誤</h4>
+                    <div>
+                        <h3>圖片預覽：</h3>
+                        <img :src="link" :alt="alt">
+                    </div>
+                    <h3>原始檔案預覽：</h3>
+                    <div class="ifbox"> 
+                        <iframe :src="link" frameborder="0" v-if="showif==true"></iframe>
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </body>
+    </html>

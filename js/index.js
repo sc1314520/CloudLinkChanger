@@ -1,0 +1,29 @@
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            before:'',
+            link:'',
+            alt:'',
+            show:false,
+            showform:false,
+            showif:true,
+        },
+        methods:{
+            change(){
+                this.showform=true;
+                this.alt='非圖片檔案格式'
+                
+                    if(this.before.split("/")[5]!=undefined){
+                        this.showif=true
+                        this.link="https://drive.google.com/uc?id="+this.before.split("/")[5]
+                    }
+                    else{
+                        this.link='';
+                        this.alt="非圖片檔案格式"
+                        this.showif=false
+                    }
+            }
+        }
+    })
+}
